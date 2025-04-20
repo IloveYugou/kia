@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>iPhone 横画面対応テンプレ</title>
+  <style>
+    :root {
+      --vh: 100%;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow-x: hidden;
+      background-color: #000;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    body {
+      padding-top: env(safe-area-inset-top);
+      padding-right: env(safe-area-inset-right);
+      padding-bottom: env(safe-area-inset-bottom);
+      padding-left: env(safe-area-inset-left);
+    }
+
+    .full-screen {
+      width: 100vw;
+      height: calc(var(--vh, 1vh) * 100);
+      background: linear-gradient(to right, #2193b0, #6dd5ed);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 24px;
+      text-align: center;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+  <div class="full-screen">
+    iPhone13 Pro 横画面でも白余白ゼロ！
+  </div>
+
+  <script>
+    function setVhUnit() {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+
+    window.addEventListener('resize', setVhUnit);
+    window.addEventListener('orientationchange', setVhUnit);
+    window.addEventListener('load', setVhUnit);
+  </script>
+</body>
+</html>
